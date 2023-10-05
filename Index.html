@@ -14,17 +14,31 @@
       <div class="banner-title">Tune Scape</div>
       <div class="banner-subtitle"></div>
     </div>
+
+    <button type="button" onclick="nextsong()">Next Song</button>
     
-    <audio controls>
-        <source src="Music/Sunshine Coast/On and on.mp3" type="audio/mpeg">
-        <source src="Music/Sunshine Coast/On and on.mp3" type="audio/mpeg">
+    <script>
+        playlist = []
+        music = "/Users/Tom/Documents/GitHub/TuneScape/Music"
+        Sunshine = music + "/Sunshine Coast"
+
+        for (s in Sunshine) {
+            playlist.push(s.name)
+        }
+
+        function nextsong() {
+            player = document.getElementById('player')
+            document.getElementById('song').src = "Music/Sunshine Coast/Bottles of Thrill.mp3"
+            player.load()
+            player.play()
+        }
+    </script>
+
+    <audio controls id="player">
+        <source id='song' src="Music/Sunshine Coast/On and on.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
   </div>
-
-<script>
-
-</script>
     
 </body>
 </html>
