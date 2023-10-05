@@ -1,0 +1,31 @@
+:root {
+    --white-font: #FFFFFF;
+    --black-font: #000000;
+    --colour1: #D1C6AD;
+    --colour2: #BBADA0;
+    --colour3: #A1869E;
+    --colour4: #797596;
+    --colour5: #0B1D51;
+}
+
+/* Defines the main container size, we are limiting to 72em max and centring in the viewport */
+.main-container {
+    max-width: 72em;
+    margin: 0 auto;
+    font-family: Inter;
+    color: var(--white-font);
+}
+
+.banner {
+    background-color: var(--colour4);
+    padding: 1em;
+}
+
+.banner-title {
+    font-size: 3em;
+}
+
+.banner-subtitle {
+    font-size: 2.25em;
+    padding-left: .2rem;
+}
