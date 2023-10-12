@@ -15,12 +15,14 @@
       <div class="banner-subtitle"></div>
     </div>
 
-    <button type="button" onclick="nextsong()">Next Song</button>
+    <button type="button" onclick="nextSong()">Next Song</button>
 
     <audio controls id="player">
         <source id='song' src="../static/Music/SunshineCoast/On and on.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
+    <button type="button" onclick="prevSong()">Previous Song</button>
   </div>
   <div hidden id="data">{{ files }}</div>
 

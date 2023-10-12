@@ -17,4 +17,4 @@ def list_files():
     return render_template('index.html', files=json.dumps(file_list))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.0.182', port=5000) # Change host IP to private IP of machine running (This is to enable other devices on the same network to connect)
