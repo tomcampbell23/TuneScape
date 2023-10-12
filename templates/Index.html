@@ -6,7 +6,6 @@
     <title>DES222</title>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <link rel="stylesheet" href="../static/style.css">
-    <script src="../static/script.js"></script>
 </head>
 <body>
     
@@ -23,8 +22,10 @@
         Your browser does not support the audio element.
     </audio>
   </div>
-  <p id="data"> {{ files }}</p>
+  <div hidden id="data">{{ files }}</div>
 
+
+  <script src="../static/script.js"></script>
  <!-- <h1>File List</h1>
     <ul id="fileList">
         {% for file in subfile %}
