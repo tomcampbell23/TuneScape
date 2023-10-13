@@ -25,10 +25,10 @@ function prevSong() { // This function finds the previous song in the playlist v
 }
 
 function shuffle(array) { // This function changes the order of the array given
-    return array.sort(() => Math.random() - 0.5); 
+    return array.sort(() => Math.random() - 0.5)
 }
 
-function inside(point, vs) {
+function inside(point, vs) { // This function determines if 'point' is inside the polygon 'vs'
     // ray-casting algorithm based on
     // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html
     
@@ -40,12 +40,12 @@ function inside(point, vs) {
         var xj = vs[j][0], yj = vs[j][1];
         
         var intersect = ((yi > y) != (yj > y))
-            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)
         if (intersect) inside = !inside;
     }
     
-    return inside;
-};
+    return inside
+}
 
 async function getRequest(endpoint) { // Make a GET api request
     const response = await fetch(`${endpoint}`);
@@ -59,29 +59,55 @@ async function getRequest(endpoint) { // Make a GET api request
 
 // ---- Variables ---- //
 
+const getCoordinatesButton = document.getElementById("getCoordinatesButton");
 const player = document.getElementById('player') // This is the music player
 var current = 0 // This is the current song in the playlist variable
 var musicFiles = JSON.parse(document.getElementById('data').textContent) // This is a Javascript Object with the music file directory 
 
 var location1, playlist
+var lon = 153.066666, lat = -26.650000 // Declares longitude and latitude variables with default coordinates in Sunshine Coast
 
 var LGAdata = getRequest('https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-australia-local-government-area@public/records?where=ste_name%20%3D%20%27Queensland%27&limit=100')
 var LGAs = {}
 var LGApolygons = {}
 
+// ---- Listeners ---- //
+
+getCoordinatesButton.addEventListener('click', (event) => { // This updates the 'lon' and 'lat' variables to the users current position (HTTPS only)
+    if (! "geolocation" in navigator) { alert("Location services not available"); return; }
+    navigator.geolocation.getCurrentPosition((position) => {
+        lon = position.coords.longitude
+        lat = position.coords.latitude
+    })
+})
+
+player.addEventListener('ended', function() { // This plays the next song once the current song ends
+    nextSong()
+})
+
+// ---- Script ---- //
+
+if (! "geolocation" in navigator) { // This displays an error when location services aren't available
+    alert("Location services not available")
+}
+navigator.geolocation.getCurrentPosition((position) => { // This gets the current coordinates of the user and sets to 'lon' and 'lat' (HTTPS only)
+    lon = position.coords.longitude
+    lat = position.coords.latitude
+}) 
+
 LGAdata.then((data) => {
     console.log(data)
-    for (i in data.results) {
-        LGAs[data.results[i].lga_name] = data.results[i].geo_shape.geometry.coordinates
+    for (i in data.results) { // This for loop saves all the polygon data under the LGA name
+        LGAs[data.results[i].lga_name] = data.results[i].geo_shape.geometry.coordinates 
     }
 
     console.log(LGAs)
 
-    for (j in LGAs) {
+    for (j in LGAs) { // This for loop gets the coordinate polygon points for each LGA and tests to see which LGA 'lon' and 'lat' are in
         for (i in LGAs[j]) {
             for (l in LGAs[j][i]) {
                 LGApolygons[l] = LGAs[j][i][l]
-                var check = inside([153.025131, -27.469770], LGApolygons[l])
+                var check = inside([lon, lat], LGApolygons[l])
                 if (check) {
                     location1 = j
                 }
@@ -93,6 +119,6 @@ LGAdata.then((data) => {
 
     playlist = shuffle(Object.values(musicFiles[location1])) // Gets the playlist for 'location1' and shuffles it
     console.log("../static/Music/" + location1 + "/" + playlist[0])
-    document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[0]
+    document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[0] // Gets the first song to play
     player.load()
 })
