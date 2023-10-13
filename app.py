@@ -13,7 +13,6 @@ def list_files():
     for dir in music_list:
         file_list[music_list[count]] = os.listdir(directory_path + '/' + str(dir))
         count +=1
-    print(file_list, file=sys.stderr)
     return render_template('index.html', files=json.dumps(file_list))
 
 if __name__ == '__main__':
