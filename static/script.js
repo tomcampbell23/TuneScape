@@ -66,7 +66,7 @@ var musicFiles = JSON.parse(document.getElementById('data').textContent) // This
 
 var location1, playlist
 // var lon = 153.066666, lat = -26.650000 // Declares longitude and latitude variables with default coordinates in Sunshine Coast
-var lon = 153.025131, lat = -27.469770
+var lon = 153.025131, lat = -27.469770 // Declares longitude and latitude variables with default coordinates in Brisbane
 
 var LGAdata = getRequest('https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-australia-local-government-area@public/records?where=ste_name%20%3D%20%27Queensland%27&limit=100')
 var LGAs = {}
@@ -75,7 +75,10 @@ var LGApolygons = {}
 // ---- Listeners ---- //
 
 getCoordinatesButton.addEventListener('click', (event) => { // This updates the 'lon' and 'lat' variables to the users current position (HTTPS only)
-    if (! "geolocation" in navigator) { alert("Location services not available"); return; }
+    if (! "geolocation" in navigator) { 
+        alert("Location services not available") 
+        return
+    }
     navigator.geolocation.getCurrentPosition((position) => {
         lon = position.coords.longitude
         lat = position.coords.latitude
