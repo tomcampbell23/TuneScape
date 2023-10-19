@@ -8,6 +8,20 @@ function nextSong() { // This function finds the next song in the playlist varia
     }
     console.log("../static/Music/" + location1 + "/" + playlist[current])
     document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[current]
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[current], function() {
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[current]);
+        console.log(tags)
+        console.log(tags.artist + " - " + tags.title + ", " + tags.picture);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("artist").innerHTML = tags.artist
+        document.getElementById("title").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
     player.load()
     player.play()
 }
@@ -20,6 +34,20 @@ function prevSong() { // This function finds the previous song in the playlist v
     }
     console.log("../static/Music/" + location1 + "/" + playlist[current])
     document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[current]
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[current], function() {
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[current]);
+        console.log(tags)
+        console.log(tags.artist + " - " + tags.title + ", " + tags.picture);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("artist").innerHTML = tags.artist
+        document.getElementById("title").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
     player.load()
     player.play()
 }
@@ -74,6 +102,7 @@ const getCoordinatesButton = document.getElementById("getCoordinatesButton");
 const player = document.getElementById('player') // This is the music player
 var current = 0 // This is the current song in the playlist variable
 var musicFiles = JSON.parse(document.getElementById('data').textContent) // This is a Javascript Object with the music file directory 
+var ID3 = window.ID3
 
 var location1, playlist
 // var lon = 153.066666, lat = -26.650000 // Declares longitude and latitude variables with default coordinates in Sunshine Coast
@@ -126,4 +155,18 @@ LGAdata.then((data) => {
     document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[0] // Gets the first song to play
     player.load()
     document.getElementById('location').innerHTML = location1
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[0], function() {
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[0]);
+        console.log(tags)
+        console.log(tags.artist + " - " + tags.title + ", " + tags.picture);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("artist").innerHTML = tags.artist
+        document.getElementById("title").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
 })

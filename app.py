@@ -11,9 +11,10 @@ def list_files():
     count = 0
     file_list = {}
     for dir in music_list:
-        file_list[music_list[count]] = os.listdir(directory_path + '/' + str(dir))
+        if str(dir) != '.DS_Store':
+            file_list[music_list[count]] = os.listdir(directory_path + '/' + str(dir))
         count +=1
     return render_template('index.html', files=json.dumps(file_list))
 
 if __name__ == '__main__':
-    app.run(debug=True, ssl_context=('TuneScape.crt', 'TuneScape.key'), host='172.20.10.2', port=5000) # Change host IP to private IP of machine running (This is to enable other devices on the same network to connect)
+    app.run(debug=True, ssl_context=('TuneScape.crt', 'TuneScape.key'), host='192.168.0.181', port=5000) # Change host IP to private IP of machine running (This is to enable other devices on the same network to connect)
