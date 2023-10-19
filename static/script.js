@@ -10,8 +10,6 @@ function nextSong() { // This function finds the next song in the playlist varia
     document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[current]
     ID3.loadTags("../static/Music/" + location1 + "/" + playlist[current], function() {
         var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[current]);
-        console.log(tags)
-        console.log(tags.artist + " - " + tags.title + ", " + tags.picture);
         var base64String = "";
         for (var i = 0; i < tags.picture.data.length; i++) {
             base64String += String.fromCharCode(tags.picture.data[i]);
@@ -24,6 +22,44 @@ function nextSong() { // This function finds the next song in the playlist varia
     );
     player.load()
     player.play()
+
+    var previous = 0
+    if (playlist.length > current - 1 && current - 1 >= 0) {
+        previous = current - 1
+    } else {
+        previous = playlist.length - 1
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[previous], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[previous]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("pArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("pArtist").innerHTML = tags.artist
+        document.getElementById("pTitle").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
+
+    var next = 0
+    if (playlist.length > current + 1) {
+        next = current + 1
+    } else {
+        next = 0
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[next], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[next]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("nArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("nArtist").innerHTML = tags.artist
+        document.getElementById("nTitle").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
 }
 
 function prevSong() { // This function finds the previous song in the playlist variable and plays it
@@ -36,8 +72,6 @@ function prevSong() { // This function finds the previous song in the playlist v
     document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[current]
     ID3.loadTags("../static/Music/" + location1 + "/" + playlist[current], function() {
         var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[current]);
-        console.log(tags)
-        console.log(tags.artist + " - " + tags.title + ", " + tags.picture);
         var base64String = "";
         for (var i = 0; i < tags.picture.data.length; i++) {
             base64String += String.fromCharCode(tags.picture.data[i]);
@@ -50,6 +84,44 @@ function prevSong() { // This function finds the previous song in the playlist v
     );
     player.load()
     player.play()
+
+    var previous = 0
+    if (playlist.length > current - 1 && current - 1 >= 0) {
+        previous = current - 1
+    } else {
+        previous = playlist.length - 1
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[previous], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[previous]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("pArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("pArtist").innerHTML = tags.artist
+        document.getElementById("pTitle").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
+
+    var next = 0
+    if (playlist.length > current + 1) {
+        next = current + 1
+    } else {
+        next = 0
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[next], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[next]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("nArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("nArtist").innerHTML = tags.artist
+        document.getElementById("nTitle").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
 }
 
 function updateCoord() { // This updates the 'lon' and 'lat' variables to the users current position (HTTPS only)
@@ -61,6 +133,77 @@ function updateCoord() { // This updates the 'lon' and 'lat' variables to the us
         lon = position.coords.longitude
         lat = position.coords.latitude
     })
+
+    for (j in LGAs) { // This for loop gets the coordinate polygon points for each LGA and tests to see which LGA 'lon' and 'lat' are in
+        for (i in LGAs[j]) {
+            for (l in LGAs[j][i]) {
+                LGApolygons[l] = LGAs[j][i][l]
+                var check = inside([lon, lat], LGApolygons[l])
+                if (check) {
+                    location1 = j
+                }
+            }
+        }
+    }
+
+    current = 0
+    playlist = shuffle(Object.values(musicFiles[location1])) // Gets the playlist for 'location1' and shuffles it
+    console.log("../static/Music/" + location1 + "/" + playlist[0])
+    document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[0] // Gets the first song to play
+    document.getElementById('location').innerHTML = location1
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[0], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[0]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("artist").innerHTML = tags.artist
+        document.getElementById("title").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
+    player.load()
+
+    var previous = 0
+    if (playlist.length > current - 1 && current - 1 >= 0) {
+        previous = current - 1
+    } else {
+        previous = playlist.length - 1
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[previous], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[previous]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("pArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("pArtist").innerHTML = tags.artist
+        document.getElementById("pTitle").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
+
+    var next = 0
+    if (playlist.length > current + 1) {
+        next = current + 1
+    } else {
+        next = 0
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[next], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[next]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("nArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("nArtist").innerHTML = tags.artist
+        document.getElementById("nTitle").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
+
+    console.log(playlist)
 }
 
 function shuffle(array) { // This function changes the order of the array given
@@ -134,8 +277,6 @@ LGAdata.then((data) => {
         LGAs[data.results[i].lga_name] = data.results[i].geo_shape.geometry.coordinates 
     }
 
-    console.log(LGAs)
-
     for (j in LGAs) { // This for loop gets the coordinate polygon points for each LGA and tests to see which LGA 'lon' and 'lat' are in
         for (i in LGAs[j]) {
             for (l in LGAs[j][i]) {
@@ -148,17 +289,13 @@ LGAdata.then((data) => {
         }
     }
 
-    console.log(location1)
-
+    current = 0
     playlist = shuffle(Object.values(musicFiles[location1])) // Gets the playlist for 'location1' and shuffles it
     console.log("../static/Music/" + location1 + "/" + playlist[0])
     document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[0] // Gets the first song to play
-    player.load()
     document.getElementById('location').innerHTML = location1
-    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[0], function() {
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[0], function() { // Gets ID3 tags from the mp3 file
         var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[0]);
-        console.log(tags)
-        console.log(tags.artist + " - " + tags.title + ", " + tags.picture);
         var base64String = "";
         for (var i = 0; i < tags.picture.data.length; i++) {
             base64String += String.fromCharCode(tags.picture.data[i]);
@@ -166,6 +303,45 @@ LGAdata.then((data) => {
         document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist").innerHTML = tags.artist
         document.getElementById("title").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
+    player.load()
+
+    var previous = 0
+    if (playlist.length > current - 1 && current - 1 >= 0) {
+        previous = current - 1
+    } else {
+        previous = playlist.length - 1
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[previous], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[previous]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("pArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("pArtist").innerHTML = tags.artist
+        document.getElementById("pTitle").innerHTML = tags.title
+    },
+        {tags: ["artist", "title", "picture"]}
+    );
+
+    var next = 0
+    if (playlist.length > current + 1) {
+        next = current + 1
+    } else {
+        next = 0
+    }
+    ID3.loadTags("../static/Music/" + location1 + "/" + playlist[next], function() { // Gets ID3 tags from the mp3 file
+        var tags = ID3.getAllTags("../static/Music/" + location1 + "/" + playlist[next]);
+        var base64String = "";
+        for (var i = 0; i < tags.picture.data.length; i++) {
+            base64String += String.fromCharCode(tags.picture.data[i]);
+        }
+        document.getElementById("nArt").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("nArtist").innerHTML = tags.artist
+        document.getElementById("nTitle").innerHTML = tags.title
     },
         {tags: ["artist", "title", "picture"]}
     );
