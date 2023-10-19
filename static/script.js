@@ -24,6 +24,17 @@ function prevSong() { // This function finds the previous song in the playlist v
     player.play()
 }
 
+function updateCoord() { // This updates the 'lon' and 'lat' variables to the users current position (HTTPS only)
+    if (! "geolocation" in navigator) { 
+        alert("Location services not available") 
+        return
+    }
+    navigator.geolocation.getCurrentPosition((position) => {
+        lon = position.coords.longitude
+        lat = position.coords.latitude
+    })
+}
+
 function shuffle(array) { // This function changes the order of the array given
     return array.sort(() => Math.random() - 0.5)
 }
@@ -74,17 +85,6 @@ var LGApolygons = {}
 
 // ---- Listeners ---- //
 
-getCoordinatesButton.addEventListener('click', (event) => { // This updates the 'lon' and 'lat' variables to the users current position (HTTPS only)
-    if (! "geolocation" in navigator) { 
-        alert("Location services not available") 
-        return
-    }
-    navigator.geolocation.getCurrentPosition((position) => {
-        lon = position.coords.longitude
-        lat = position.coords.latitude
-    })
-})
-
 player.addEventListener('ended', function() { // This plays the next song once the current song ends
     nextSong()
 })
@@ -125,4 +125,5 @@ LGAdata.then((data) => {
     console.log("../static/Music/" + location1 + "/" + playlist[0])
     document.getElementById('song').src = "../static/Music/" + location1 + "/" + playlist[0] // Gets the first song to play
     player.load()
+    document.getElementById('location').innerHTML = location1
 })

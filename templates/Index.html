@@ -25,7 +25,9 @@
     <button type="button" onclick="prevSong()">Previous Song</button>
   </div>
   <div hidden id="data">{{ files }}</div>
-  <button id="getCoordinatesButton">Use current location</button>
+  <button type="button" onclick="updateCoord()">Use current location</button>
+
+  <div id="location"></div>
 
   <script src="../static/script.js"></script>
 </body>
