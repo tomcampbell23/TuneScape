@@ -6,6 +6,12 @@
     <title>DES222</title>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+   crossorigin=""></script>
 </head>
 <body>
     
@@ -25,7 +31,9 @@
     <button type="button" onclick="prevSong()">Previous Song</button>
   </div>
   <div hidden id="data">{{ files }}</div>
-  <button type="button" onclick="updateCoord()">Use current location</button>
+  <button type="button" onclick="updateCoords()">Use current location</button>
+
+  <div id="map" style="height: 400px;"></div>
 
   <div id="location"></div>
   <div id="songInfo">

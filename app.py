@@ -17,4 +17,4 @@ def list_files():
     return render_template('index.html', files=json.dumps(file_list))
 
 if __name__ == '__main__':
-    app.run(debug=True, ssl_context=('TuneScape.crt', 'TuneScape.key'), host='192.168.0.181', port=5000) # Change host IP to private IP of machine running (This is to enable other devices on the same network to connect)
+    app.run(debug=True, ssl_context=('TuneScape.crt', 'TuneScape.key'), host='172.20.10.2', port=5000) # Change host IP to private IP of machine running (This is to enable other devices on the same network to connect)
