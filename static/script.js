@@ -275,7 +275,6 @@ async function onMapClick(e) {
 
 // ---- Variables ---- //
 
-const getCoordinatesButton = document.getElementById("getCoordinatesButton");
 const player = document.getElementById('player') // This is the music player
 var current = 0 // This is the current song in the playlist variable
 var musicFiles = JSON.parse(document.getElementById('data').textContent) // This is a Javascript Object with the music file directory 
