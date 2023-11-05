@@ -17,6 +17,9 @@ function nextSong() { // This function finds the next song in the playlist varia
         document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist").innerHTML = tags.artist
         document.getElementById("title").innerHTML = tags.title
+        document.getElementById("art1").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("artist1").innerHTML = tags.artist
+        document.getElementById("title1").innerHTML = tags.title
     },
         {tags: ["artist", "title", "picture"]}
     );
@@ -79,6 +82,9 @@ function prevSong() { // This function finds the previous song in the playlist v
         document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist").innerHTML = tags.artist
         document.getElementById("title").innerHTML = tags.title
+        document.getElementById("art1").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("artist1").innerHTML = tags.artist
+        document.getElementById("title1").innerHTML = tags.title
     },
         {tags: ["artist", "title", "picture"]}
     );
@@ -124,6 +130,45 @@ function prevSong() { // This function finds the previous song in the playlist v
     );
 }
 
+function play() {
+    if (player.paused) {
+        document.getElementById("play").classList.remove("play")
+        document.getElementById("play").classList.add("pause")
+        player.play()
+    } else {
+        document.getElementById("play").classList.add("play")
+        document.getElementById("play").classList.remove("pause")
+        player.pause()
+    }
+}
+
+function updateProgress() {
+    progress.value = player.currentTime / player.duration * 100
+    document.getElementById('currentTime').innerHTML = getTimeFromNum(player.currentTime)
+    document.getElementById('totalTime').innerHTML = getTimeFromNum(player.duration)
+}
+
+function updateTime(value) {
+    player.currentTime = value * player.duration / 100
+}
+
+function getTimeFromNum(num) {
+    if (isNaN(num)) {
+        return '0:00'
+    } else {
+        let seconds = parseInt(num);
+        let minutes = parseInt(seconds / 60);
+        seconds -= minutes * 60;
+        const hours = parseInt(minutes / 60);
+        minutes -= hours * 60;
+    
+        if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+        return `${String(hours).padStart(2, 0)}:${minutes}:${String(
+        seconds % 60
+        ).padStart(2, 0)}`;
+    }
+  }
+
 function setupLGA() { // This function finds the LGA of lon & lat, adds the marker to the map, and reads the ID3 tags of the mp3 files    
     for (j in LGAs) { // This for loop gets the coordinate polygon points for each LGA and tests to see which LGA 'lon' and 'lat' are in
         for (i in LGAs[j]) {
@@ -167,6 +212,9 @@ function setupLGA() { // This function finds the LGA of lon & lat, adds the mark
         document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist").innerHTML = tags.artist
         document.getElementById("title").innerHTML = tags.title
+        document.getElementById("art1").src = "data:image/png;base64," + window.btoa(base64String)
+        document.getElementById("artist1").innerHTML = tags.artist
+        document.getElementById("title1").innerHTML = tags.title
     },
         {tags: ["artist", "title", "picture"]}
     );
@@ -278,6 +326,7 @@ async function onMapClick(e) {
 const player = document.getElementById('player') // This is the music player
 var current = 0 // This is the current song in the playlist variable
 var musicFiles = JSON.parse(document.getElementById('data').textContent) // This is a Javascript Object with the music file directory 
+var progress = document.getElementById('progress')
 var ID3 = window.ID3
 var map
 var marker

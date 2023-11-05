@@ -14,42 +14,54 @@
    crossorigin=""></script>
 </head>
 <body>
-    
+  <div hidden id="data">{{ files }}</div>
   <div class="main-container">
     <div class="banner" id="banner">
       <div class="banner-title">Tune Scape</div>
-      <div class="banner-subtitle"></div>
     </div>
 
-    <button type="button" onclick="nextSong()">Next Song</button>
+    <div class="mapContainer">
+      <button type="button" class="bLocation" onclick="updateCoords()">Use current location</button>
+      <div id="location" class="location"></div>
+      <div id="map" class="map"></div>
+    </div>
 
-    <audio controls id="player">
-        <source id='song' src="" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <ol class="songlist">
+      <li id="previousSongInfo">
+        <img id="pArt" class="art" src="">
+        <div id="pArtist" class="artist"></div>
+        <div id="pTitle" class="sTitle"></div>
+      </li>
+      <li id="songInfo">
+        <img id="art" class="art" src="">
+        <div id="artist" class="artist"></div>
+        <div id="title" class="sTitle"></div>
+        <img class="current" src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/xgixot6u7x-62%3A87?alt=media&token=abcf3613-f4db-4fe2-8dc0-942bb1dabd8c">
+      </li>
+      <li id="nextSongInfo">
+        <img id="nArt" class="art" src="">
+        <div id="nArtist" class="artist"></div>
+        <div id="nTitle" class="sTitle"></div>
+      </li>
+    </ol>
 
-    <button type="button" onclick="prevSong()">Previous Song</button>
-  </div>
-  <div hidden id="data">{{ files }}</div>
-  <button type="button" onclick="updateCoords()">Use current location</button>
+    <div class="controls">
+      <img id="art1" class="art" src="">
+      <div id="artist1" class="artist"></div>
+      <div id="title1" class="sTitle"></div>
+      <img id="prev" class="button" onclick="prevSong()" src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/xgixot6u7x-61%3A63?alt=media&token=8486d07c-a8b1-430c-854e-161e689d46b3">
+      <img id="play" class="button play" onclick="play()">
+      <audio id="player" ontimeupdate="updateProgress()">
+          <source id='song' src="" type="audio/mpeg">
+          Your browser does not support the audio element.
+      </audio>
+  
+      <img id="skip" class="button" onclick="nextSong()" src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/xgixot6u7x-61%3A65?alt=media&token=1c836955-c534-4389-be05-4e3bd3b1d411">
 
-  <div id="map" style="height: 400px;"></div>
-
-  <div id="location"></div>
-  <div id="songInfo">
-    <img id="art" src="">
-    <div id="artist"></div>
-    <div id="title"></div>
-  </div>
-  <div id="nextSongInfo">
-    <img id="nArt" src="">
-    <div id="nArtist"></div>
-    <div id="nTitle"></div>
-  </div>
-  <div id="previousSongInfo">
-    <img id="pArt" src="">
-    <div id="pArtist"></div>
-    <div id="pTitle"></div>
+      <div id="currentTime"></div>
+      <input type="range" min="0" max="100" value="0" id="progress" oninput="updateTime(this.value)">
+      <div id="totalTime"></div>
+    </div>
   </div>
 
   <script src="../static/id3-minimized.js"></script>

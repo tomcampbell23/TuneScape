@@ -1,31 +1,276 @@
 :root {
-    --white-font: #FFFFFF;
-    --black-font: #000000;
-    --colour1: #D1C6AD;
-    --colour2: #BBADA0;
-    --colour3: #A1869E;
-    --colour4: #797596;
-    --colour5: #0B1D51;
+    --white: #FFFFFF;
+    --black: #000000;
+    --colour1: rgba(37, 84, 110);
+    --colour2: hsla(0, 1%, 50%, 0.5);
+    --colour3: #807E7E;
+    --background: #1B4965;
 }
 
-/* Defines the main container size, we are limiting to 72em max and centring in the viewport */
-.main-container {
-    max-width: 72em;
-    margin: 0 auto;
-    font-family: Inter;
-    color: var(--white-font);
+* {-webkit-font-smoothing: antialiased;}
+
+body {
+    margin: 0;
+    background-color: var(--background);
 }
 
 .banner {
-    background-color: var(--colour4);
-    padding: 1em;
+    border-right: solid var(--colour1) 5px;
+    grid-area: ban;
+    overflow-wrap: break-word;
+    word-wrap : break-word;
+    position: relative;
+    width: 100%;
 }
 
 .banner-title {
-    font-size: 3em;
+    top: .5em;
+    font-size: 2.25em;
+    font-weight: bold;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
 }
 
-.banner-subtitle {
-    font-size: 2.25em;
-    padding-left: .2rem;
+/* .bLocation {
+
+} */
+
+.location {
+    font-size: 2em;
+    text-align:center;
+    vertical-align:text-middle;
+    line-height:auto;
+}
+
+.art {
+    width: 5.1875rem;
+    height: auto;
+    grid-area: art;
+}
+
+.artist {
+    grid-area: a1;
+    font-size: 1em;
+}
+
+.sTitle {
+    font-weight: 700;
+    grid-area: ti;
+    font-size: 1.5em;
+}
+
+.songlist {
+    list-style-type: none;
+    grid-area: sl;
+}
+
+.current {
+    height: 3em;
+    width: auto;
+    grid-area: cur;
+}
+
+.songlist > li {
+    padding: .5em 0px .5em .5em;
+    border-radius: 1em;
+    display: grid;
+    column-gap: 0px;
+    grid-template-areas:
+        "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+        "art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+        "art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+        "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . ";
+}
+
+.songlist > li:hover {
+    background-color: var(--colour2);
+}
+
+#songInfo {
+    grid-template-areas:
+        "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+        "art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . cur"
+        "art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . cur"
+        "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . ";
+}
+
+#currentTime {
+    grid-area: ct;
+}
+
+#totalTime {
+    grid-area: tt;
+}
+
+#progress {
+    grid-area: pr;
+}
+
+#prev {
+    grid-area: pv;
+    height: 2.5em;
+}
+
+#play {
+    grid-area: pa;
+    height: 2.5em;
+}
+
+#skip {
+    grid-area: sk;
+    height: 2.5em;
+}
+
+.controls {
+    display: grid;
+    column-gap: 0px;
+    grid-template-areas:
+        "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+        "art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+        "art ti  .  pv pa sk .  .  .  .  ct pr pr pr pr pr pr pr pr tt . "
+        "art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+        "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . ";
+}
+
+.button:active {
+    filter: opacity(50%);
+}
+
+.mapContainer {
+    grid-area: map;
+}
+
+.map {
+    width: auto;
+    height: 100%;
+}
+
+.controls {
+    grid-area: con;
+    background-color: var(--colour2);
+}
+
+.play {
+    content: url("https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/xgixot6u7x-61%3A61?alt=media&token=ff9edbf0-f2df-4ba7-b0b3-6c8c07ca31fd");
+}
+
+.pause {
+    content: url("https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/4to2x21rlip-122%3A190?alt=media&token=5b177356-6cc7-4827-ba57-b8fbf216d48c");
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    background-color: var(--colour3);
+    overflow: hidden;
+    height: 10px;
+    border-radius: 1em;
+}
+  
+input[type='range']::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 1em;
+}
+  
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: var(--white);
+    border-radius: 1em;
+    box-shadow: -410px 0 0 400px var(--white);
+    cursor: pointer;
+    height: 10px;
+    width: 20px;
+    border: 0;
+}
+
+input[type="range"]::-moz-range-track {
+    background-color: var(--colour3);
+  }
+  input[type="range"]::-moz-range-progress {
+    background-color: var(--white);
+    height: 20px
+  }
+  input[type="range"]::-ms-fill-upper {
+    background-color: var(--colour3);
+  }
+  input[type="range"]::-ms-fill-lower {
+    background-color: var(--white);
+  }
+
+/* Mobile Layout
+.main-container {
+    display: grid;
+    column-gap: 1em;
+    grid-template:
+        "ban ban ban ban" minmax(6em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c1  c1  c1  c1" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c2  c2  c2  c2" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c3  c3  c3  c3" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c4  c4  c4  c4" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c5  c5  c5  c5" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c6  c6  c6  c6" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c7  c7  c7  c7" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c8  c8  c8  c8" minmax(28em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        "foo foo foo foo" minmax(6em, auto);
+}
+
+/* Ipad Layout 
+@media (min-width: 50em) {
+    .main-container {
+        grid-template:
+            "ban ban ban ban ban ban ban ban" minmax(8em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            " c1  c1  c1  c1  c2  c2  c2  c2" minmax(28em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            " .   .   c3  c3  c3  c3  .   . " minmax(28em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c4  c4  c4  c4  c4  c4  c4  c4" minmax(36em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c5  c5  c5  c5  c6  c6  c6  c6" minmax(28em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            " .   .   c7  c7  c7  c7  .   . " minmax(28em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c8  c8  c8  c8  c8  c8  c8  c8" minmax(40em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "foo foo foo foo foo foo foo foo" minmax(6em, auto);
+    }
+
+    #cardImage4 {
+        height: 28em;
+    }
+
+    #cardImage8 {
+        height: 28em;
+    }
+} */
+
+/* Defines the main container size, we are limiting to 72em max and centring in the viewport */
+.main-container {
+    font-family: Inter;
+    color: var(--white);
+    display: grid;
+    column-gap: 1em;
+}
+
+/* Desktop layout */
+@media (min-width: 75em) {
+    .main-container {
+        grid-template:
+            "ban ban ban  .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "ban ban ban  .  map map map map map map map map map map map map map map map map map map map  . " minmax(16em, auto)
+            "ban ban ban  .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . " minmax(5em, auto)
+            "ban ban ban  .   .  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl   .   . " minmax(11em, auto)
+            "ban ban ban  .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "con con con con con con con con con con con con con con con con con con con con con con con con" minmax(3em, auto);
+    }
 }
