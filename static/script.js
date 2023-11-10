@@ -17,14 +17,17 @@ function nextSong() { // This function finds the next song in the playlist varia
         document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist").innerHTML = tags.artist
         document.getElementById("title").innerHTML = tags.title
+        document.getElementById("year").innerHTML = tags.year
         document.getElementById("art1").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist1").innerHTML = tags.artist
         document.getElementById("title1").innerHTML = tags.title
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
     player.load()
     player.play()
+    document.getElementById("play").classList.remove("play")
+    document.getElementById("play").classList.add("pause")
 
     var previous = 0
     if (playlist.length > current - 1 && current - 1 >= 0) {
@@ -41,8 +44,9 @@ function nextSong() { // This function finds the next song in the playlist varia
         document.getElementById("pArt").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("pArtist").innerHTML = tags.artist
         document.getElementById("pTitle").innerHTML = tags.title
+        document.getElementById("pYear").innerHTML = tags.year
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
 
     var next = 0
@@ -60,8 +64,9 @@ function nextSong() { // This function finds the next song in the playlist varia
         document.getElementById("nArt").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("nArtist").innerHTML = tags.artist
         document.getElementById("nTitle").innerHTML = tags.title
+        document.getElementById("nYear").innerHTML = tags.year
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
 }
 
@@ -82,14 +87,17 @@ function prevSong() { // This function finds the previous song in the playlist v
         document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist").innerHTML = tags.artist
         document.getElementById("title").innerHTML = tags.title
+        document.getElementById("year").innerHTML = tags.year
         document.getElementById("art1").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist1").innerHTML = tags.artist
         document.getElementById("title1").innerHTML = tags.title
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
     player.load()
     player.play()
+    document.getElementById("play").classList.remove("play")
+    document.getElementById("play").classList.add("pause")
 
     var previous = 0
     if (playlist.length > current - 1 && current - 1 >= 0) {
@@ -106,8 +114,9 @@ function prevSong() { // This function finds the previous song in the playlist v
         document.getElementById("pArt").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("pArtist").innerHTML = tags.artist
         document.getElementById("pTitle").innerHTML = tags.title
+        document.getElementById("pYear").innerHTML = tags.year
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
 
     var next = 0
@@ -125,8 +134,9 @@ function prevSong() { // This function finds the previous song in the playlist v
         document.getElementById("nArt").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("nArtist").innerHTML = tags.artist
         document.getElementById("nTitle").innerHTML = tags.title
+        document.getElementById("nYear").innerHTML = tags.year
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
 }
 
@@ -212,11 +222,12 @@ function setupLGA() { // This function finds the LGA of lon & lat, adds the mark
         document.getElementById("art").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist").innerHTML = tags.artist
         document.getElementById("title").innerHTML = tags.title
+        document.getElementById("year").innerHTML = tags.year
         document.getElementById("art1").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("artist1").innerHTML = tags.artist
         document.getElementById("title1").innerHTML = tags.title
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
     player.load()
 
@@ -235,8 +246,9 @@ function setupLGA() { // This function finds the LGA of lon & lat, adds the mark
         document.getElementById("pArt").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("pArtist").innerHTML = tags.artist
         document.getElementById("pTitle").innerHTML = tags.title
+        document.getElementById("pYear").innerHTML = tags.year
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
 
     var next = 0
@@ -254,8 +266,9 @@ function setupLGA() { // This function finds the LGA of lon & lat, adds the mark
         document.getElementById("nArt").src = "data:image/png;base64," + window.btoa(base64String)
         document.getElementById("nArtist").innerHTML = tags.artist
         document.getElementById("nTitle").innerHTML = tags.title
+        document.getElementById("nYear").innerHTML = tags.year
     },
-        {tags: ["artist", "title", "picture"]}
+        {tags: ["artist", "title", "picture", "year"]}
     );
 
     console.log(playlist)
