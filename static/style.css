@@ -268,8 +268,7 @@ input[type="range"]::-moz-range-track {
 
 
 /* Mobile Layout */
-@media (min-width:16em) {
-
+@media (min-width:1em) {
     body {
         margin: 0;
         background-image:
@@ -794,8 +793,6 @@ input[type="range"]::-moz-range-track {
         text-align: center;
         padding-top:0.2em;
     }
-
-
 
     .main-container {
         display:grid;
