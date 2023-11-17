@@ -199,6 +199,7 @@ body {
 .map {
     width: auto;
     height: 100%;
+    z-index: -1;
 }
 
 .controls {
@@ -618,6 +619,7 @@ input[type="range"]::-moz-range-track {
         height: 90%;
         border-bottom-left-radius: 2.25em;
         border-bottom-right-radius: 2.25em;
+        z-index: -1;
     }
 
     .current {
