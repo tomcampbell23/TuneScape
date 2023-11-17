@@ -76,11 +76,6 @@ body {
 
 }
 
-/* .bLocation {
-
-}
-*/
-
 .location {
     font-size: 2em;
     font-weight: bold;
@@ -352,6 +347,31 @@ input[type="range"]::-moz-range-track {
         visibility: hidden;
     }
 
+    .bLocation2 {
+        display: block;
+        visibility: visible;
+        position:relative;
+        top: 14%;
+        left: 6%;
+        text-align: right;
+        font-size: 1.3em;
+        font-weight: bold;
+        color:var(--colour8);
+        background-color: var(--colour1);
+        padding-top: 0.25em;
+        padding-bottom: 0.3em;
+        padding-left: 0.8em;
+        padding-right: 1.1em;
+        border: 0px;
+        border-radius:0.8em;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+    .bLocation2:hover {
+        background-color:#2f6280;
+        box-shadow: 0 0 10px rgb(80, 132, 162);
+    }
 
     .about {
         background-color: var(--colour4);
@@ -455,7 +475,7 @@ input[type="range"]::-moz-range-track {
             " ad  ad  ad  ad  "  minmax(4em, auto)
             " .   .   .   .   "  minmax(2em, auto)
             " map map map map "  minmax(20em, auto)
-            " .   .   .   .   "  minmax(5em, auto)
+            " .   .   .   .   "  minmax(8em, auto)
             " sl  sl  sl  sl  "  minmax(23em, auto)
             " .   .   .   .   "  minmax(0.25em, auto)
             " foo foo foo foo "  minmax(4em, auto)
@@ -616,6 +636,10 @@ input[type="range"]::-moz-range-track {
         width:60em;
     }
 
+    .bLocation2 {
+        display: none;
+        visibility: hidden;
+    }
 
     .bLocation {
         display: block;
