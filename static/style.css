@@ -1,11 +1,40 @@
+/*TODO: Add hover for media controls
+
+        Implement light mode MAYBE
+
+        */
+
+
+
+
 :root {
     --white: #FFFFFF;
     --black: #000000;
     --colour1: rgba(37, 84, 110);
-    --colour2: hsla(0, 1%, 50%, 0.5);
+    --ocolour1: rgba(37, 84, 110, 0.8);
+    --colour2: #4d6371;
+    --ocolour2: rgba(77, 99, 113, 0.8);
     --colour3: #807E7E;
+    --colour4: #4C748C;
+    --ocolour4: rgba(76, 116, 140, 0.4);
+    --colour5: #1C3341;
+    --ocolour5: rgba(28, 51, 65, 0.5);
+    --colour6: #807E7E;
+    --colour7: #56B5D3;
+    --colour8: #CAD9E7;
+    --colour9: #3A444C;
+    --colour10: #898E97;
     --background: #1B4965;
+    --obackground1: rgba(27, 73, 101, 0.55);
+    --obackground2: rgba(76, 116, 140, 1);
+
 }
+
+
+/*.light-theme{
+    --colour1: #FFFFFF;
+}*/
+
 
 * {-webkit-font-smoothing: antialiased;}
 
@@ -15,7 +44,8 @@ body {
 }
 
 .banner {
-    border-right: solid var(--colour1) 5px;
+    background-color: var(--colour4);
+    border-right: solid var(--colour1) 7px;
     grid-area: ban;
     overflow-wrap: break-word;
     word-wrap : break-word;
@@ -32,15 +62,34 @@ body {
     position: absolute;
 }
 
+.about {
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+    grid-area: ab;
+}
+
+.aboutDescription {
+    font-size: 1em;
+    grid-area: ad;
+    text-align: center;
+
+}
+
 /* .bLocation {
 
-} */
+}
+*/
 
 .location {
     font-size: 2em;
+    font-weight: bold;
     text-align:center;
     vertical-align:text-middle;
     line-height:auto;
+    padding-bottom: 0.25em;
+    padding-top: 0.25em;
+    background-color: var(--colour2);
 }
 
 .art {
@@ -69,6 +118,7 @@ body {
     height: 3em;
     width: auto;
     grid-area: cur;
+    
 }
 
 .year {
@@ -81,7 +131,7 @@ body {
     border-radius: 1em;
     display: grid;
     column-gap: 0px;
-    grid-template-areas:
+    grid-template:
         "art  .  .  .  .  .  .  .  . "
         "art ti  .  .  yr .  .  .  . "
         "art a1  .  .  yr .  .  .  . "
@@ -89,11 +139,11 @@ body {
 }
 
 .songlist > li:hover {
-    background-color: var(--colour2);
+    background-color: var(--ocolour2);
 }
 
 #songInfo {
-    grid-template-areas:
+    grid-template:
         "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
         "art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . cur"
         "art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . cur"
@@ -130,7 +180,7 @@ body {
 .controls {
     display: grid;
     column-gap: 0px;
-    grid-template-areas:
+    grid-template:
         "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
         "art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
         "art ti  .  pv pa sk .  .  .  .  ct pr pr pr pr pr pr pr pr tt . "
@@ -162,6 +212,11 @@ body {
 
 .pause {
     content: url("https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/4to2x21rlip-122%3A190?alt=media&token=5b177356-6cc7-4827-ba57-b8fbf216d48c");
+}
+
+.footer {
+    background-color: var(--colour5);
+    grid-area:foo;
 }
 
 input[type='range'] {
@@ -204,34 +259,167 @@ input[type="range"]::-moz-range-track {
     background-color: var(--white);
   }
 
-/* Mobile Layout
+
+/* Defines the main container size, we are limiting to 72em max and centring in the viewport */
 .main-container {
+    font-family: Inter;
+    color: var(--white);
     display: grid;
     column-gap: 1em;
-    grid-template:
-        "ban ban ban ban" minmax(6em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c1  c1  c1  c1" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c2  c2  c2  c2" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c3  c3  c3  c3" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c4  c4  c4  c4" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c5  c5  c5  c5" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c6  c6  c6  c6" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c7  c7  c7  c7" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        " c8  c8  c8  c8" minmax(28em, auto)
-        " .   .   .   . " minmax(2em, auto)
-        "foo foo foo foo" minmax(6em, auto);
 }
 
+
+
+/* Mobile Layout */
+@media (min-width:16em) {
+
+    body {
+        margin: 0;
+        background-image:
+        linear-gradient(to bottom, var(--obackground1), var(--obackground2)),
+        url('../static/Images/Image\ 12\ edited.jpg');
+        background-size:cover;
+    }
+
+    p.big{
+        line-height: 1.8;
+    }
+
+    .topNav #myLinks {
+        display: none;
+    }
+  
+    .topNav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+    }
+  
+    .topNav a.icon {
+        height: 1em;
+        width: 1em;
+        display: block;
+        position: absolute;
+        left: 90%;
+        top: 1.3%;
+    }
+  
+    .topNav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+  
+    .banner {
+        padding-bottom:5em;
+        padding-left: 1em;
+        padding-right:1em;
+        border-bottom: solid var(--colour1) 5px;
+        grid-area: ban;
+        width: 100%;
+    }
+
+    .banner-info #info-items{
+        display:none;
+        visibility: hidden;
+
+    }
+
+
+    .banner-info {
+        display: none;
+        visibility: hidden;
+    }
+
+    .bLocation{
+        display: none;
+        visibility: hidden;
+    }
+
+
+    .about {
+        background-color: var(--colour4);
+        font-size: 0.8em;
+        font-weight: bold;
+        text-align: center;
+        grid-area: ab;
+    
+    }
+    
+    .aboutDescription {
+        background-color: var(--colour1);
+        color:var(--colour8);
+        font-size: 1em;
+        grid-area: ad;
+        text-align: center;
+    
+    }
+
+    .current {
+        height: 2em;
+        width: 2em;
+        grid-area: cur;
+        
+    }
+
+    .songlist > li {
+        padding: .5em 0px .5em .5em;
+        border-radius: 1em;
+        display: grid;
+        column-gap: 0px;
+        grid-template:
+            "art  .  .  .  .  .  .  .  yr"
+            "art ti  .  .  .  .  .  .  yr"
+            "art a1  .  .  .  .  .  .  . "
+            "art  .  .  .  .  .  .  .  . ";
+    }
+    
+
+    
+    #songInfo {
+        grid-template:
+            "art  .  .  .  .  .  .   .   yr "
+            "art ti  .  .  .  .  cur .   yr "
+            "art a1  .  .  .  .  cur .   .  "  
+            "art  .  .  .  .  .  cur .   .  "
+            "art  .  .  .  .  .  .   .   . "  
+    }
+    
+    
+    .controls {
+        display: grid;
+        column-gap: 0px;
+        grid-template:
+            " .  .   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  " minmax(1em,auto)
+            " .  art .  ti .  .  .  .  .  .  .  .  .  .  .  .  pv pa sk .  .  "
+            " .  art .  a1 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+            " .  art .  .  .  ct .  pr pr pr pr pr pr pr pr pr pr pr pr  .  tt"
+            " .  .   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+    }
+
+    .main-container {
+        display: grid;
+        column-gap: 1em;
+        grid-template:
+            " ban ban ban ban "  minmax(4em, auto)
+            " .   .   .   .   "  minmax(3em, auto)
+            " ab  ab  ab  ab  "  minmax(2em, auto)
+            " ad  ad  ad  ad  "  minmax(4em, auto)
+            " .   .   .   .   "  minmax(2em, auto)
+            " map map map map "  minmax(20em, auto)
+            " .   .   .   .   "  minmax(8em, auto)
+            " con con con con "  minmax(8em, auto)
+            " sl  sl  sl  sl  "  minmax(36em, auto)
+            " .   .   .   .   "  minmax(0.25em, auto)
+            " foo foo foo foo "  minmax(4em, auto)
+    }
+}
+
+
+
 /* Ipad Layout 
-@media (min-width: 50em) {
+@media (min-width: 35em) {
     .main-container {
         grid-template:
             "ban ban ban ban ban ban ban ban" minmax(8em, auto)
@@ -260,23 +448,275 @@ input[type="range"]::-moz-range-track {
     }
 } */
 
-/* Defines the main container size, we are limiting to 72em max and centring in the viewport */
-.main-container {
-    font-family: Inter;
-    color: var(--white);
-    display: grid;
-    column-gap: 1em;
-}
+
+
 
 /* Desktop layout */
 @media (min-width: 75em) {
-    .main-container {
+
+    body {
+        margin: 0;
+        background-image:
+        linear-gradient(to bottom, var(--obackground1), var(--obackground2)),
+        url('../static/Images/Image\ 5.jpg');
+        background-size: cover;
+    }
+
+    p.big {
+        line-height:1.8em;
+    }
+
+    .banner {
+        border-right: solid var(--colour1) 10px;
+        background-color: var(--ocolour4);
+        grid-area: ban;
+        overflow-wrap: break-word;
+        word-wrap : break-word;
+        position: relative;
+        width: 73%;
+        padding-left:2.5em;
+    }
+
+
+    .banner-title {
+        top: .5em;
+        font-size: 2.25em;
+        font-weight: bold;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .topNav {
+        display:none;
+        visibility: hidden;
+    }
+  
+    .topNav #myLinks {
+        display: none;
+        visibility:hidden;
+    }
+  
+    .topNav a {
+        display: none;
+        visibility: hidden;
+    }
+  
+    .topNav a.icon {
+        display:none;
+        visibility: hidden;
+    }
+  
+    .topNav a:hover {
+        display:none;
+        visibility: hidden;
+    }
+
+    .banner-info {
+        display: block;
+        visibility: visible;
+        padding-top: 5em;
+        font-size: 1.5em;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .banner-info #info-items {
+        display: block;
+        visibility: visible;
+    }
+
+    
+    .banner-info a {
+        color: white;
+        padding: 24px 32px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+        transition-duration: 0.5s;
+    }
+
+
+    .banner-info a:hover {
+        color:#000000;
+        background-color: var(--colour8);
+        box-shadow: 0 0 10px rgb(80, 132, 162);
+
+    }
+
+    .about {
+        display:none;
+        visibility: hidden;
+    }
+    
+    .aboutDescription {
+        background-color: var(--ocolour4);
+        border-right: solid var(--colour1) 10px;
+        font-size: 1em;
+        width: 73%;
+        padding-left: 2em;
+        padding-top: 1.5em;
+        padding-right:1.5em;
+        text-align: left;
+        word-wrap: break-word;
+        grid-area: ab;
+    
+    }
+
+    .mapContainer {
+        grid-area: map;
+        width:60em;
+    }
+
+
+    .bLocation {
+        display: block;
+        visibility: visible;
+        position:relative;
+        top: 13.5%;
+        left: 6%;
+        text-align: right;
+        font-size: 1.3em;
+        font-weight: bold;
+        color:var(--colour8);
+        background-color: var(--colour1);
+        padding-top: 0.25em;
+        padding-bottom: 0.3em;
+        padding-left: 0.8em;
+        padding-right: 1.1em;
+        border: 0px;
+        border-radius:0.8em;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+    .bLocation:hover {
+        background-color:#2f6280;
+        box-shadow: 0 0 10px rgb(80, 132, 162);
+    }
+
+
+
+    .location {
+        font-size: 2em;
+        font-weight: bold;
+        text-align:center;
+        vertical-align:text-middle;
+        line-height:auto;
+        padding-bottom: 1em;
+        padding-top: 1em;
+        background-color: var(--ocolour2);
+        border-top-left-radius: 3em;
+        border-top-right-radius: 3em;
+    }
+
+
+    .map {
+        width: auto;
+        height: 90%;
+        border-bottom-left-radius: 2.25em;
+        border-bottom-right-radius: 2.25em;
+    }
+
+    .current {
+        height: 3.3em;
+        width: 3.3em;
+        grid-area: cur;
+        
+    }
+
+    .songlist > li {
+        padding: .5em 0px .5em .5em;
+        border-radius: 1em;
+        display: grid;
+        column-gap: 0px;
+        transition-duration: 0.25s;
         grid-template:
-            "ban ban ban  .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            "ban ban ban  .  map map map map map map map map map map map map map map map map map map map  . " minmax(16em, auto)
-            "ban ban ban  .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . " minmax(5em, auto)
-            "ban ban ban  .   .  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl  sl   .   . " minmax(11em, auto)
-            "ban ban ban  .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            "con con con con con con con con con con con con con con con con con con con con con con con con" minmax(3em, auto);
+            "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+            "art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr "
+            "art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr " 
+            "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+    }
+
+    .songlist > li:hover {
+        background-color: var(--ocolour5);
+    }
+
+    #songInfo {
+        padding: 1.5em 0px 1.5em .5em;
+        border-radius: 1em;
+        column-gap: 0px;
+        grid-template:
+            ".   .   .  .  .  .  .  .  .  .   .  .  .  .  .  .  .  .  .  .  .   " 
+            "art .   .  .  .  .  .  .  .  .   .  .  .  .  .  .  .  .  .  .  yr  "
+            "art ti  .  .  .  .  .  .  .  cur .  .  .  .  .  .  .  .  .  .  yr  "
+            "art a1 .  .  .  .  .  .  .   cur .  .  .  .  .  .  .  .  .  .  .   "
+    }
+
+
+    .play {
+        content: url("https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/xgixot6u7x-61%3A61?alt=media&token=ff9edbf0-f2df-4ba7-b0b3-6c8c07ca31fd");
+        cursor: pointer;
+    }
+
+    .pause {
+        cursor: pointer;
+    }
+
+    #skip {
+        cursor: pointer;
+    }
+
+    #prev {
+        cursor: pointer;
+    }
+
+
+
+
+    .controls {
+        display: grid;
+        position: fixed;
+        left: 0%;
+        bottom: 0;
+        width: 100%;
+        column-gap: 0px;
+        grid-template:
+            "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+            "art ti  .  pv pa sk .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+            "art ti  .  pv pa sk .  .  .  .  ct pr pr pr pr pr pr pr pr .  tt "
+            "art a1  .  pv pa sk .  .  .  .  ct pr pr pr pr pr pr pr pr .  tt "
+            "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+        
+    }
+
+    .footer {
+        color:#CAD9E7;
+        font-style: italic;
+        background-color:var(--ocolour5);
+        grid-area: foo;
+        border-top-left-radius: 2.5em;
+        border-top-right-radius: 2.5em;
+        text-align: center;
+        padding-top:0.2em;
+    }
+
+
+
+    .main-container {
+        display:grid;
+        grid-template:
+            "ban ban ban ban .   .   .   .   .   .   map map map map map .   .   .  " minmax(0.1em, auto)
+            "ban ban ban ban .   .   .   .   .   .   map map map map map .   .   .  " minmax(13em, auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   map map map map map .   .   .  " minmax(5em,auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   .   .   .   .   .   .   .   .  " minmax(4em, auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   .   .   .   .   .   .   .   .  " minmax(2em, auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   sl  sl  sl  sl  sl  .   .   .  " minmax(11em, auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   .   .   .   .   .   .   .   .  " minmax(3em, auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   foo foo foo foo foo .   .   .  " minmax(5em, auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   foo foo foo foo foo .   .   .  " minmax(2em, auto)
+            "ab  ab  ab  ab  .   .   .   .   .   .   foo foo foo foo foo .   .   .  " minmax(4em, auto)
     }
 }

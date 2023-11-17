@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DES222</title>
+    <title>TuneScape</title>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -12,16 +13,39 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
    crossorigin=""></script>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <div hidden id="data">{{ files }}</div>
   <div class="main-container">
     <div class="banner" id="banner">
-      <div class="banner-title">Tune Scape</div>
+      <div class= "banner-title">Tune Scape</div>
+      <div class="banner-info">
+        <div id = "info-items">
+          <a href = "#Login">Login</a>
+          <a href = "#Upload">Upload</a>
+          <a href = "#About">About</a>
+          <a href = "#Contact Us">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="about">
+      <h1>What is TuneScape?</h1>
+    </div>
+
+    <div class="aboutDescription">
+      <p class ="big">TuneScape is a web-based radio application that follows you <br>wherever you go!<br><br> 
+        Simply press the "Use Current Location" button and TuneScape <br> will retrieve your current location<br>
+        and play music from artists <br> and bands from that area!<br><br> look at this point i really need a bunch of dummy text to fill this out so it looks nice, so heres lorem ipsum.<br><br>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+        ullamco laboris nisi ut aliquip ex ea commodo consequat. <br><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur..."
+      </p>
     </div>
 
     <div class="mapContainer">
-      <button type="button" class="bLocation" onclick="updateCoords()">Use current location</button>
+      <button type="button" class="bLocation" onclick="updateCoords()"><i class="fa fa-location-arrow" style="font-size: 1.25em"></i> &nbsp; Get Location </button>
       <div id="location" class="location"></div>
       <div id="map" class="map"></div>
     </div>
@@ -65,6 +89,31 @@
       <input type="range" min="0" max="100" value="0" id="progress" oninput="updateTime(this.value)">
       <div id="totalTime"></div>
     </div>
+
+    <div class="footer">
+      <p class = "big">TuneScape created by Tomas Campbell and Zachary Hohn <br>
+      Copyright of all audio and images belong to their respective owners</p>
+    </div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Top Navigation Menu -->
+<div class="topNav">
+  <!-- Navigation links (hidden by default) -->
+  <div id="myLinks">
+    <a href ="#Login">Login</a>
+    <a href ="#Upload">Upload</a>
+    <a href ="#About">About</a>
+    <a href ="#Contact Us">"Contact Us</a>
+  </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a href="javascript:void(0);" class="icon" onclick="myBurger()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
   </div>
 
   <script src="../static/id3-minimized.js"></script>
