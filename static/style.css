@@ -689,8 +689,8 @@ input[type="range"]::-moz-range-track {
     }
 
     .current {
-        height: 3.3em;
-        width: 3.3em;
+        height: 3em;
+        width: 3em;
         grid-area: cur;
         
     }
@@ -703,10 +703,9 @@ input[type="range"]::-moz-range-track {
         column-gap: 0px;
         transition-duration: 0.25s;
         grid-template:
-            "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
-            "art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr "
-            "art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr " 
-            "art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+            " art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . " minmax(.1em,1.3em)
+            " art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr" minmax(1.5em,1.5em)
+            " art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr" minmax(1em,auto)
     }
 
     .songlist > li:hover {
@@ -714,14 +713,13 @@ input[type="range"]::-moz-range-track {
     }
 
     #songInfo {
-        padding: 1.5em 0px 1.5em .5em;
+        padding: .5em 0px .5em .5em;
         border-radius: 1em;
         column-gap: 0px;
         grid-template:
-            ".   .   .  .  .  .  .  .  .  .   .  .  .  .  .  .  .  .  .  .  .   " 
-            "art .   .  .  .  .  .  .  .  .   .  .  .  .  .  .  .  .  .  .  yr  "
-            "art ti  .  .  .  .  .  .  .  cur .  .  .  .  .  .  .  .  .  .  yr  "
-            "art a1 .  .  .  .  .  .  .   cur .  .  .  .  .  .  .  .  .  .  .   "
+            " art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . " minmax(.1em,1.3em)
+            " art ti  .  .  .  .  .  .  .  . cur .  .  .  .  .  .  .  .  yr" minmax(1.5em,1.5em)
+            " art a1  .  .  .  .  .  .  .  . cur .  .  .  .  .  .  .  .  yr" minmax(1em,auto)
     }
 
 
