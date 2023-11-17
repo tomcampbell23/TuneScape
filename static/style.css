@@ -403,19 +403,16 @@ input[type="range"]::-moz-range-track {
         display: grid;
         column-gap: 0px;
         grid-template:
-            "art  .  .  .  .  .  .  .  yr"
-            "art ti  .  .  .  .  .  .  yr"
-            "art a1  .  .  .  .  .  .  . "
-            "art  .  .  .  .  .  .  .  . ";
+            " art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . " minmax(.1em,1.4em)
+            " art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr" minmax(1.25em,1.25em)
+            " art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr" minmax(.75em,auto)
     }
     
     #songInfo {
         grid-template:
-            "art  .  .  .  .  .  .   .   yr "
-            "art ti  .  .  .  .  cur .   yr "
-            "art a1  .  .  .  .  cur .   .  "  
-            "art  .  .  .  .  .  cur .   .  "
-            "art  .  .  .  .  .  .   .   . "  
+            " art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . " minmax(.1em,1.4em)
+            " art ti  .  .  .  .  .  .  .  . cur .  .  .  .  .  .  .  .  yr" minmax(1.25em,1.25em)
+            " art a1  .  .  .  .  .  .  .  . cur .  .  .  .  .  .  .  .  yr" minmax(.75em,auto)
     }
     
     input[type='range'] {
