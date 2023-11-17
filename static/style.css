@@ -289,6 +289,8 @@ input[type="range"]::-moz-range-track {
 
     .topNav #myLinks {
         display: none;
+        text-align: center;
+        min-width: 100vw;
     }
   
     .topNav a {
@@ -328,6 +330,17 @@ input[type="range"]::-moz-range-track {
 
     }
 
+    .footer {
+        color:#CAD9E7;
+        font-style: italic;
+        background-color:var(--ocolour5);
+        grid-area: foo;
+        border-top-left-radius: 2.5em;
+        border-top-right-radius: 2.5em;
+        text-align: center;
+        padding-top:0.2em;
+        padding-bottom: 6em;
+    }
 
     .banner-info {
         display: none;
@@ -442,9 +455,8 @@ input[type="range"]::-moz-range-track {
             " ad  ad  ad  ad  "  minmax(4em, auto)
             " .   .   .   .   "  minmax(2em, auto)
             " map map map map "  minmax(20em, auto)
-            " .   .   .   .   "  minmax(8em, auto)
-            " con con con con "  minmax(8em, auto)
-            " sl  sl  sl  sl  "  minmax(36em, auto)
+            " .   .   .   .   "  minmax(5em, auto)
+            " sl  sl  sl  sl  "  minmax(23em, auto)
             " .   .   .   .   "  minmax(0.25em, auto)
             " foo foo foo foo "  minmax(4em, auto)
     }
