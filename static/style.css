@@ -293,6 +293,7 @@ input[type="range"]::-moz-range-track {
         text-decoration: none;
         font-size: 17px;
         display: block;
+        transition-duration: 0.3s;
     }
   
     .topNav a.icon {
@@ -305,8 +306,9 @@ input[type="range"]::-moz-range-track {
     }
   
     .topNav a:hover {
-        background-color: #ddd;
-        color: black;
+        color:#000000;
+        background-color: var(--colour8);
+        box-shadow: 0 0 10px rgb(80, 132, 162);
     }
   
     .banner {
@@ -382,7 +384,7 @@ input[type="range"]::-moz-range-track {
     }
     
     .aboutDescription {
-        background-color: var(--colour1);
+        background-color: var(--ocolour1);
         color:var(--colour8);
         font-size: 1em;
         grid-area: ad;
@@ -401,11 +403,18 @@ input[type="range"]::-moz-range-track {
         border-radius: 1em;
         display: grid;
         column-gap: 0px;
+        transition-duration: 0.3s;
         grid-template:
             " art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . " minmax(.1em,1.4em)
             " art ti  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr" minmax(1.25em,1.25em)
             " art a1  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  yr" minmax(.75em,auto)
     }
+
+    .songlist > li:hover {
+        background-color: var(--ocolour5);
+        cursor:pointer;
+    }
+
     
     #songInfo {
         grid-template:
@@ -440,6 +449,22 @@ input[type="range"]::-moz-range-track {
     
     .sTitle {
         font-size: 1.25em;
+    }
+
+    .play:hover{
+        cursor:pointer;
+    }
+
+    .pause:hover{
+        cursor:pointer;
+    }
+
+    #skip:hover{
+        cursor:pointer;
+    }
+
+    #prev:hover{
+        cursor:pointer;
     }
     
     .controls {
