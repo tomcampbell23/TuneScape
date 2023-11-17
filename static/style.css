@@ -221,6 +221,7 @@ body {
 }
 
 input[type='range'] {
+    cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
     background-color: var(--colour3);
@@ -630,6 +631,7 @@ input[type="range"]::-moz-range-track {
     }
 
     .songlist > li {
+        cursor: pointer;
         padding: .5em 0px .5em .5em;
         border-radius: 1em;
         display: grid;
