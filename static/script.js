@@ -334,6 +334,15 @@ async function onMapClick(e) {
     updateCoords(e.latlng.lat, e.latlng.lng)
 }
 
+function myBurger() { // This function allows user to click to toggle view of hamburger menu containing dead links rn
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+
 // ---- Variables ---- //
 
 const player = document.getElementById('player') // This is the music player
