@@ -240,7 +240,7 @@ input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: var(--white);
     border-radius: 1em;
-    box-shadow: -410px 0 0 400px var(--white);
+    box-shadow: -610px 0 0 600px var(--white);
     cursor: pointer;
     height: 10px;
     width: 20px;
@@ -362,7 +362,6 @@ input[type="range"]::-moz-range-track {
         height: 2em;
         width: 2em;
         grid-area: cur;
-        
     }
 
     .songlist > li {
@@ -377,8 +376,6 @@ input[type="range"]::-moz-range-track {
             "art  .  .  .  .  .  .  .  . ";
     }
     
-
-    
     #songInfo {
         grid-template:
             "art  .  .  .  .  .  .   .   yr "
@@ -388,21 +385,56 @@ input[type="range"]::-moz-range-track {
             "art  .  .  .  .  .  .   .   . "  
     }
     
+    input[type='range'] {
+        border-radius: 0em;
+    }
+
+    input[type='range']::-webkit-slider-runnable-track {
+        border-radius: 0em;
+    }
+      
+    input[type='range']::-webkit-slider-thumb {
+        border-radius: 0em;
+    }
+
+    #currentTime {
+        display: none;
+    }
+    
+    #totalTime {
+        display: none;
+    }
+
+    .artist {
+        font-size: .75em;
+    }
+    
+    .sTitle {
+        font-size: 1.25em;
+    }
     
     .controls {
         display: grid;
+        position: fixed;
+        left: 0%;
+        bottom: 0;
+        width: 100%;
         column-gap: 0px;
         grid-template:
-            " .  .   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  " minmax(1em,auto)
-            " .  art .  ti .  .  .  .  .  .  .  .  .  .  .  .  pv pa sk .  .  "
-            " .  art .  a1 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
-            " .  art .  .  .  ct .  pr pr pr pr pr pr pr pr pr pr pr pr  .  tt"
-            " .  .   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  "
+            " pr  pr  pr pr pr pr pr pr pr pr pr pr pr pr pr pr pr pr pr pr" minmax(1em,auto)
+            " art  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . " minmax(.1em,1.4em)
+            " art ti  .  .  .  .  .  .  .  pv .  pa .  sk .  .  .  .  .  . " minmax(1.25em,1.25em)
+            " art a1  .  .  .  .  .  .  .  pv .  pa .  sk .  .  .  .  .  . " minmax(.75em,auto)
+    }
+
+    .songlist {
+        padding-left: 0%;
     }
 
     .main-container {
         display: grid;
         column-gap: 1em;
+        overflow: hidden;
         grid-template:
             " ban ban ban ban "  minmax(4em, auto)
             " .   .   .   .   "  minmax(3em, auto)
@@ -454,7 +486,7 @@ input[type="range"]::-moz-range-track {
 
 
 /* Desktop layout */
-@media (min-width: 75em) {
+@media (min-width: 65em) {
 
     body {
         margin: 0;
@@ -677,8 +709,33 @@ input[type="range"]::-moz-range-track {
         cursor: pointer;
     }
 
+    #currentTime {
+        display: block;
+    }
+    
+    #totalTime {
+        display: block;
+    }
 
+    input[type='range'] {
+        border-radius: 1em;
+    }
 
+    input[type='range']::-webkit-slider-runnable-track {
+        border-radius: 1em;
+    }
+      
+    input[type='range']::-webkit-slider-thumb {
+        border-radius: 1em;
+    }
+
+    .artist {
+        font-size: 1em;
+    }
+    
+    .sTitle {
+        font-size: 1.5em;
+    }
 
     .controls {
         display: grid;
